@@ -123,11 +123,12 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="rose", secondary_hue="rose")) a
 
     # 🖤 เปลี่ยนสีข้อความความแม่นยำเป็น "สีดำ"
     gr.Markdown(
-        f"""<div style="text-align: center; padding: 10px; border: 1px solid #E5E7EB; 
-        border-radius: 0.5rem; background-color: #F9FAFB;">
-        <h3 style="margin:0; color: #000000;">📊 ความแม่นยำของโมเดล: 
-        <strong>{model_accuracy:.2%}</strong></h3></div>"""
-    )
+    f"""<div style="text-align: center; padding: 10px; border: 1px solid #E5E7EB; 
+    border-radius: 0.5rem; background-color: #F9FAFB;">
+    <h3 style="margin:0; color: #000000;">📊 ความแม่นยำของโมเดล: 
+    <strong>{model_accuracy:.2%}</strong></h3></div>"""
+)
+
 
     inputs_list = [
         gr.Number(label=f"{col.replace('_', ' ').title()} ({feature_translations.get(col, '')})", value=0)
@@ -176,5 +177,7 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="rose", secondary_hue="rose")) a
 # ส่วนที่ 4: รันโปรแกรม (Render-compatible)
 # ----------------------------------------------------
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 7860))
+    port = int(os.environ.get("PORT", 7860))  # Render จะส่ง PORT ให้
     demo.launch(server_name="0.0.0.0", server_port=port)
+
+
